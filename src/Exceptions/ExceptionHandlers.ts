@@ -1,5 +1,5 @@
 import { Response } from "express";
-import { AppError } from "utils";
+import { AppError } from "@/utils";
 
 export const sendErrorDev = (err: AppError, _, res: Response) => {
   return res.status(err.statusCode).json({

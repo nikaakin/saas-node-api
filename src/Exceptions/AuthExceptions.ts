@@ -1,4 +1,4 @@
-import { AppError } from "utils";
+import { AppError } from "@/utils";
 
 export const handleJWTError = () =>
   new AppError("invalid token. Please log in again!", 401);

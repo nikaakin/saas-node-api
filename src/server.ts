@@ -1,7 +1,8 @@
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
-import { globalErrorHandler } from "Exceptions";
+import { AppError } from "@/utils";
+import { globalErrorHandler } from "@/exceptions";
 
 export const app = express();
 
@@ -14,7 +15,7 @@ app.use("/auth", (_, __, next) => next());
 app.use("/api", (_, __, next) => next());
 
 app.all("*", (req, res, next) => {
-  next(new Error(`Can't find ${req.originalUrl} on this server!`));
+  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 
 app.use(globalErrorHandler);

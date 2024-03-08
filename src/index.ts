@@ -1,8 +1,9 @@
+import "tsconfig-paths/register";
 import * as dotenv from "dotenv";
 dotenv.config();
 
-import { app } from "./server";
-import config from "./config";
+import { app } from "@/server";
+import config from "@/config";
 
 process.on("uncaughtException", (err) => {
   console.log(err.name, err.message);

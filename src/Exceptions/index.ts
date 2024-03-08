@@ -1,13 +1,13 @@
-import { AppError } from "utils";
-import { handleJWTError, handleJWTExpiredToken } from "./AuthExceptions";
-import { sendErrorDev, sendErrorProd } from "./ExceptionHandlers";
+import { AppError } from "@/utils";
+import { handleJWTError, handleJWTExpiredToken } from "./authExceptions";
+import { sendErrorDev, sendErrorProd } from "./exceptionHandlers";
 import { NextFunction, Request, Response } from "express";
 
 export const globalErrorHandler = (
   err: AppError,
   req: Request,
   res: Response,
-  next: NextFunction,
+  next: NextFunction
 ) => {
   err.statusCode = err.statusCode || 500;
   err.status = err.status || "error";
