@@ -13,7 +13,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// enums
 
 enum Role {
   ADMIN
@@ -26,7 +25,6 @@ enum Subscription {
   PREMIUM
 }
 
-// models
 
 model User {
   id       String   @id @default(uuid())
@@ -34,6 +32,7 @@ model User {
   name     String  @unique
   password String
   verified_at DateTime?
+  verification_token String
   companies    CompanyUser[]
 }
 
@@ -45,13 +44,13 @@ model Company {
   country String
   industry String
   verified_at DateTime?
+  verification_token String
   password String
   subscription Subscription @default(FREE)
   createdAt DateTime @default(now())
   users CompanyUser[]
 }
 
-// pivot table
 
 model CompanyUser {
   id        String @id @default(uuid())
@@ -61,6 +60,7 @@ model CompanyUser {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   verified_at DateTime?
+  verification_token String
   company   Company @relation(fields: [companyId], references: [id])
   user      User @relation(fields: [userId], references: [id])   
 }

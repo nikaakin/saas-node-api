@@ -7,4 +7,5 @@ export interface SignUpBodyType {
 export interface LoginBodyType {
   name: string;
   password: string;
+  rememberMe?: boolean;
 }
