@@ -2,6 +2,7 @@ import { AppError } from "@/utils";
 import { handleJWTError, handleJWTExpiredToken } from "./authExceptions";
 import { sendErrorDev, sendErrorProd } from "./exceptionHandlers";
 import { NextFunction, Request, Response } from "express";
+import { appConfig } from "@/config";
 
 export const globalErrorHandler = (
   err: AppError,
@@ -12,9 +13,9 @@ export const globalErrorHandler = (
   err.statusCode = err.statusCode || 500;
   err.status = err.status || "error";
 
-  if (process.env.NODE_ENV === "development") {
+  if (appConfig.env === "development") {
     sendErrorDev(err, req, res);
-  } else if (process.env.NODE_ENV === "production") {
+  } else if (appConfig.env === "production") {
     let error = { ...err };
     error.message = err.message;
 

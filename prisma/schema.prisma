@@ -31,7 +31,7 @@ enum Subscription {
 model User {
   id       String   @id @default(uuid())
   email    String   @unique
-  name     String
+  name     String  @unique
   password String
   verified_at DateTime?
   companies    CompanyUser[]
@@ -40,7 +40,7 @@ model User {
 
 model Company {
   id    String @id @default(uuid())
-  name  String 
+  name  String @unique
   email String @unique
   country String
   industry String
@@ -62,5 +62,5 @@ model CompanyUser {
   updatedAt DateTime @updatedAt
   verified_at DateTime?
   company   Company @relation(fields: [companyId], references: [id])
-  user      User @relation(fields: [userId], references: [id])
+  user      User @relation(fields: [userId], references: [id])   
 }

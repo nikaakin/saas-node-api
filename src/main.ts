@@ -3,15 +3,15 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 import { app } from "@/server";
-import config from "@/config";
+import { appConfig } from "@/config";
 
 process.on("uncaughtException", (err) => {
   console.log(err.name, err.message);
   process.exit(1);
 });
 
-const server = app.listen(config.port, () => {
-  console.log(`server is on http://localhost:${config.port}`);
+const server = app.listen(appConfig.port, () => {
+  console.log(`server is on http://localhost:${appConfig.port}`);
 });
 
 process.on("unhandledRejection", (err: Error) => {
