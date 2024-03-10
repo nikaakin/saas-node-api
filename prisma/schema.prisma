@@ -40,8 +40,8 @@ model User {
 
 model Company {
   id    String @id @default(uuid())
-  name  String
-  email String
+  name  String 
+  email String @unique
   country String
   industry String
   verified_at DateTime?
