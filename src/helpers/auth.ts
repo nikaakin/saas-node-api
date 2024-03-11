@@ -13,5 +13,7 @@ export const createJWT = (user?: User, rememeber_me = false) => {
 };
 
 export const makeVerificationToken = (key: string) => {
-  return sign({ key }, appConfig.secrets.jwt);
+  return sign({ key }, appConfig.secrets.jwt, {
+    expiresIn: "1d",
+  });
 };

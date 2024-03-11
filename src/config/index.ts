@@ -24,6 +24,7 @@ export const appConfig = merge(
       jwt: process.env.JWT_SECRET,
       jwt_expires_in: process.env.JWT_EXPIRES_IN,
       jwt_remember_me: process.env.JWT_REMEMBER_ME_EXPIRES_IN,
+      bcrypt_salt: process.env.BCRYPT_SALT,
       dbUrl: process.env.DATABASE_URL,
     },
   },

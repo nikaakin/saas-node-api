@@ -33,6 +33,8 @@ model User {
   password String
   verified_at DateTime?
   verification_token String
+  reset_token String?
+  reseted_at DateTime?
   companies    CompanyUser[]
 }
 
@@ -45,6 +47,8 @@ model Company {
   industry String
   verified_at DateTime?
   verification_token String
+  reset_token String?
+  reseted_at DateTime?
   password String
   subscription Subscription @default(FREE)
   createdAt DateTime @default(now())
