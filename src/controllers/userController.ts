@@ -50,11 +50,7 @@ export const login = async (req: Request, res: Response) => {
     },
   });
 
-  if (!user) {
-    throw new AppError("wrong password or name/email", 401);
-  }
-
-  if (!compare(password, user.password)) {
+  if (!user || !compare(password, user.password)) {
     throw new AppError("wrong password or name/email", 401);
   }
 
